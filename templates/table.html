@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List of items to do</title>
+
+  </head>
+  <body>
+	<p>Here are all the item on the To Do list:</p>
+
+	<table>
+		{% for key in todo_list %}
+		<tr>
+	  	<td>{{ key }}
+			<form action="/delete" method="post">
+			<input type="submit" value="Delete"</input>
+			<input type="hidden" value="{{key}}" name="del"}</input>
+			</form>
+		</td>
+		</tr>
+		{% endfor %}
+		
+	</table>
+
+    	
+	<form action="/submit" method="post">
+	<input type="text" name="task">Task</input>
+  	<input type="text" name="email">Email</input>
+
+	<select name="priority">
+		<option selected="selected" value ="Low">Low</option>
+		<option value="Medium">Medium</option>
+		<option value="High">High</option>
+	
+	<input type="submit" value="Add To Do Item"</input>
+	</form>
+
+	<form action="/clear" method="post">
+	<input type="submit" value="Clear"</input>
+	</form>
+
+	<form action="/save" method="post">
+	<input type="submit" value="Save"</input>
+	</form>
+
+  </body>
+</html>
